@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+Django CRUD | Update
+{% endblock %}
+{% block body %}
+{% csrf_token %}
+<div class="container px-4 mt-5">
+    <div class="row gx-5">
+        <div class="col">
+            <div class="p-3 border bg-light">
+                <legend><b><center>Update User Info</center></b></legend>
+                    <form class="form-inline" method="POST" action="/update/{{ key.id }}">
+                    {% csrf_token %} 
+                    <input class="form-control" type="text" placeholder="First Name" aria-label="default input example" name="first" value="{{ key.first }}" required="required"> <br>
+                    <input class="form-control" type="text" placeholder="Last Name" aria-label="default input example" name="last" value="{{ key.last }}" required="required"> <br>
+                    <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email" value="{{ key.email }}" required="required"> <br>
+                    <input class="form-control" type="text" placeholder="Date Of Birth Ex:DD/MM/YYY" aria-label="default input example" name="dob" value="{{ key.dob }}" required="required"> <br>
+                    <input class="form-control" type="text" placeholder="Location" aria-label="default input example" name="location" value="{{ key.location }}" required="required"> <br>
+                    <button type="submit" class="btn btn-outline-warning">Update</button>
+               </div>
+              </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

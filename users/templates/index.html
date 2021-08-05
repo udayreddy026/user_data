@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}
+Django CRUD | Create & Read & Delete
+{% endblock %}
+
+{% block body %}
+<div class="container px-4 mt-4">
+    <div class="row gx-5">
+      <div class="col">
+       <div class="p-3 border bg-light">
+           <legend><b><center>Add New User</center></b></legend>
+        <form class="form-inline" action="create" method="POST">
+            {% csrf_token %}
+            <input class="form-control" type="text" placeholder="First Name" aria-label="default input example" name="first" required="required"> <br>
+            <input class="form-control" type="text" placeholder="Last Name" aria-label="default input example" name="last" required="required"> <br>
+            <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email" required="required"> <br>
+            <input class="form-control" type="text" placeholder="Date Of Birth Ex:DD/MM/YYY" aria-label="default input example" name="dob" required="required"> <br>
+            <input class="form-control" type="text" placeholder="Location" aria-label="default input example" name="location" required="required"> <br>
+
+            <button type="submit" class="btn btn-outline-success">ADD USER</button>
+        </form>
+
+       </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="container px-4 mt-4">
+    <div class="row gx-5">
+      <div class="col">
+       <div class="p-3 border bg-light">
+<table class="table table-bordered">
+    <thead class="alert-warning">
+        <tr>
+            <th>DB_ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Date Of Birth</th>
+            <th>Location</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for db in key %}
+        <tr>
+            <td>{{ db.id }}</td>
+            <td><b>{{ db.first }}</b></td>
+            <td>{{ db.last }}</td>
+            <td>{{ db.email }}</td>
+            <td>{{ db.dob }}</td>
+            <td>{{ db.location }}</td>
+            <td><center><a class="btn btn-sm btn-warning" href="update/{{ db.id }}"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a class="btn btn-sm btn-danger" href="delete/{{ db.id }}"><span class="glyphicon glyphicon-trash"></span> Delete</a></center></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
